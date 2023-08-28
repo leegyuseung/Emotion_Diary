@@ -1,8 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
-.App {
-  padding: 20px;
+/* 프로젝트 기초 공사 1*/
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nanum Pen Script";
+  min-height: 100vh;
+  margin: 0px;
+}
 
-  font-family: "Yeon Sung", cursive;
-  font-family: "Nanum Pen Script", cursive;
+/* min-width가 650px 이상 일때만 적용되는 CSS */
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+/* 650px 이하 일때만 적용되는 CSS */
+@media (max-width: 650px) {
+  .App {
+    width: 90v2;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
