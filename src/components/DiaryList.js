@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+
+const sortOptionList = [
+  { value: "latest", name: "최신순" },
+  { value: "oldest", name: "오래된순" },
+];
+
+const ControlMenu = ({ value, onChange, optionList }) => {
+  return (
+    <select value={value} onChange={(e) => onChange(e.target.value)}>
+      {optionList.map((it, idx) => (
+        <option value={it.value} key={idx}>
+          {it.name}
+        </option>
+      ))}
+    </select>
+  );
+};
 
 const DiaryList = ({ diaryList }) => {
+  // 정렬
+  const [sortType, setSortType] = useState("latest");
+
+  const getProcessedDiaryList = () => {
+    const compare = (a, b) => {
+      if (sortType === "latest") {
+        return parseInt(b.date) - parseInt(a.date);
+      } else {
+        return parseInt(a.date) - parseInt(b.date);
+      }
+    };
+    // 깊은 복사
+    const copyList = JSON.parse(JSON.stringify(diaryList));
+    const sortedList = copyList.sort(compare);
+
+    return sortedList;
+  };
+
   return (
     <div>
-      {diaryList.map((it) => (
+      <ControlMenu
+        value={sortType}
+        onChange={setSortType}
+        optionList={sortOptionList}
+      />
+      {getProcessedDiaryList().map((it) => (
         <div key={it.id}>{it.content}</div>
       ))}
     </div>
