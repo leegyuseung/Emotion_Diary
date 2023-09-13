@@ -6,6 +6,8 @@ import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
 
+import { getStringDate } from "../utils/date.js";
+
 const emotionList = [
   {
     emotion_id: 1,
@@ -33,12 +35,6 @@ const emotionList = [
     emotion_descript: "끔찍함",
   },
 ];
-
-// 오늘 날짜를 형식을 바꿔주기 위함
-const getStringDate = (date) => {
-  // ISO형식의 문자열을 반환하는 함수 toISOString()
-  return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
