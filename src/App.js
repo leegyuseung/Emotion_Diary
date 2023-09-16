@@ -46,7 +46,7 @@ function App() {
       dataId.current = parseInt(diaryList[0].id + 1);
       dispatch({ type: "INIT", data: diaryList });
     }
-  });
+  }, []);
 
   const dataId = useRef(0);
   //CREATE
